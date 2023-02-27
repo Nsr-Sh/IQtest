@@ -82,3 +82,74 @@ function showPage(e) {
     let updatetime = setInterval(counter, 1000);
   }
 }
+
+// check if clicked answer is correct
+options.addEventListener("click", check);
+function check(e) {
+  // click one option
+  if (e.target.classList.contains("answers")) {
+    clicked = e.target;
+
+    if (slideNum < 30) {
+      console.log("slidenum:", slideNum);
+      const index = correctAnswers[slideNum - 1] - 1;
+      console.log("index", index);
+      // if correct:
+      if (clicked == answers[index]) {
+        console.log("correct");
+        scorecount++;
+        console.log("score", scorecount);
+      }
+
+      updateTestBox(slideNum);
+      slideNum++;
+    } else {
+      console.log("score", scorecount);
+      test.classList.add("hide");
+      result.classList.remove("hide");
+      updateResultBox(scorecount, timer.textContent);
+    }
+  }
+}
+
+// -------------------functions
+// change test box
+// Title: update test box
+// neshan dadane soale baadi va update shomare soal
+function updateTestBox(num) {
+  num = Number(num);
+  //change question number
+  number.textContent = `${num + 1} of 30`;
+  // change question
+  question.firstChild.src = `assets/images/${num + 1}/test${num + 1}.png`;
+  // optionNum=Number of options
+  const optionNum = num <= 12 ? 6 : 8;
+  let newTag = "";
+  for (i = 1; i <= optionNum; i++) {
+    newTag += ` <img src="assets/images/${num + 1}/${
+      num + 1
+    }-${i}.png" alt="" class="answers">`;
+  }
+  options.innerHTML = newTag;
+}
+
+// Title: set karane timer
+// neshan dadane zamane separi shod be sorate 00:00
+function counter() {
+  count++;
+  if (count < 60) {
+    minPart = "00";
+    secPart = count < 10 ? String(count).padStart(2, "0") : String(count);
+  } else {
+    minPart = String(Math.trunc(count / 60));
+
+    secPart = String(count % 60);
+    if (minPart < 10) {
+      minPart = minPart.padStart(2, "0");
+    }
+    if (secPart < 10) {
+      secPart = secPart.padStart(2, "0");
+    }
+  }
+  timer.textContent = `${minPart}:${secPart}`;
+}
