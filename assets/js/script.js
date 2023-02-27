@@ -114,11 +114,12 @@ function check(e) {
 function updateTestBox(num) {
   num = Number(num);
   //change question number
+  // slides number:num+1
   number.textContent = `${num + 1} of 30`;
   // change question
   question.firstChild.src = `assets/images/${num + 1}/test${num + 1}.png`;
   // optionNum=Number of options
-  const optionNum = num <= 12 ? 6 : 8;
+  const optionNum = num + 1 <= 12 ? 6 : 8;
   let newTag = "";
   for (i = 1; i <= optionNum; i++) {
     newTag += ` <img src="assets/images/${num + 1}/${
