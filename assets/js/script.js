@@ -91,20 +91,15 @@ function check(e) {
     clicked = e.target;
 
     if (slideNum < 30) {
-      console.log("slidenum:", slideNum);
       const index = correctAnswers[slideNum - 1] - 1;
-      console.log("index", index);
       // if correct:
       if (clicked == answers[index]) {
-        console.log("correct");
         scorecount++;
-        console.log("score", scorecount);
       }
 
       updateTestBox(slideNum);
       slideNum++;
     } else {
-      console.log("score", scorecount);
       test.classList.add("hide");
       result.classList.remove("hide");
       updateResultBox(scorecount, timer.textContent);
