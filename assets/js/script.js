@@ -153,3 +153,90 @@ function counter() {
   }
   timer.textContent = `${minPart}:${secPart}`;
 }
+
+// Title :update result Box
+// neshan dadane natige test
+// va zamane kole separi shide va chart
+function updateResultBox(score, time) {
+  //final iq score
+  let text;
+  const iqScore = Math.round(mapping(score));
+  finalScore.textContent = iqScore;
+  // IQ classification
+  if (iqScore >= 130) {
+    text = "Very Superior";
+  } else if (iqScore >= 120 && iqScore <= 129) {
+    text = "Superior";
+  } else if (iqScore >= 110 && iqScore <= 119) {
+    text = "High Average";
+  } else if (iqScore >= 90 && iqScore <= 109) {
+    text = "Average";
+  } else if (iqScore >= 80 && iqScore <= 89) {
+    text = "Low Average";
+  } else if (iqScore >= 70 && iqScore <= 79) {
+    text = "Very Low";
+  } else if (iqScore <= 69) {
+    text = "Extremely Low";
+  }
+  // display classification in Box
+  const userName = input.value;
+  user.textContent = userName;
+  description.innerHTML = text;
+  // display elapsed time
+  const [minutes, seconds] = time.split(":");
+  if (minutes == "00") {
+    timeDetails.textContent = `you  have completed the test in ${
+      seconds < 10 ? seconds[1] : seconds
+    } second`;
+  } else {
+    timeDetails.textContent = ` you  have completed the test in ${
+      time[0] == "0" ? time.slice(1) : time
+    } minutes`;
+  }
+  displayChart(score);
+}
+
+//Title: mapping score
+// change raw score to standard IQ score
+function mapping(oldValue) {
+  const oldMax = 28;
+  const oldMin = 2;
+  const newMax = 145;
+  const newMin = 55;
+
+  oldRange = oldMax - oldMin;
+  newRange = newMax - newMin;
+  return (newValue = ((oldValue - oldMin) * newRange) / oldRange + newMin);
+}
+
+// Title:create chart with chart.js
+// namayeshe tedade pasokhhaye sahih va ghalat
+//  besorate charte pie
+function displayChart(value) {
+  var xValues = ["correct", "wrong"];
+  var yValues = [value, 30 - value];
+  var barColors = ["#FDFF00", "white"];
+
+  new Chart("myChart", {
+    type: "pie",
+    data: {
+      labels: xValues,
+      datasets: [
+        {
+          backgroundColor: barColors,
+          data: yValues,
+        },
+      ],
+    },
+    options: {
+      // title: {
+      //   display: true,
+      // },
+      legend: {
+        labels: {
+          fontSize: 18,
+        },
+      },
+    },
+  });
+}
