@@ -40,3 +40,45 @@ const html = `<div class="container">
 
 </div>
 </div>`;
+
+const body = document.body;
+body.innerHTML = html;
+
+// selector
+const form = document.querySelector("form");
+const input = document.querySelector("#input");
+const test = document.querySelector("#test");
+const result = document.querySelector("#result");
+const timer = document.querySelector("#timer >span");
+const description = document.querySelector("#description");
+const timeDetails = document.querySelector("#timeDetails");
+const finalScore = document.querySelector("#finalscore");
+
+const options = document.querySelector("#options");
+const answers = document.getElementsByClassName("answers");
+const number = document.querySelector("#number span");
+const question = document.querySelector("#question");
+const user = document.querySelector("#username");
+
+let slideNum = 1;
+// timer
+let count = 0;
+let secPart, minPart;
+// correct answers array
+const correctAnswers = [
+  3, 1, 5, 5, 2, 1, 2, 2, 2, 6, 4, 1, 4, 7, 2, 3, 1, 6, 5, 8, 4, 4, 7, 6, 4, 7,
+  7, 3, 2, 8,
+];
+let scorecount = 0;
+
+// --------------------events
+// form submit
+form.addEventListener("submit", showPage);
+function showPage(e) {
+  e.preventDefault();
+  if (input.value != "") {
+    form.classList.add("hide");
+    test.classList.remove("hide");
+    let updatetime = setInterval(counter, 1000);
+  }
+}
