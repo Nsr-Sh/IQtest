@@ -22,7 +22,6 @@ const html = `<div class="container">
         <img src="assets/images/1/1-4.png" alt="" class="answers">
         <img src="assets/images/1/1-5.png" alt="" class="answers">
         <img src="assets/images/1/1-6.png" alt="" class="answers">
-        <img src="assets/images/1/1-6.png" alt="" class="answers">
       </div>
     </div>
 </div>
