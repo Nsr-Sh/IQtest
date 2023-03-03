@@ -9,32 +9,35 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
+  height: 100vh;
+  overflow: hidden;
   font-family: "Poppins", sans-serif;
 }
 
 .container {
-  width: 1000px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px;
-  margin-top: 50px;
-}
-
-.container .box {
-  margin-bottom: 20px;
 }
 
 .box {
-  width: 400px;
   background-color: #5ee8f8;
   color: #fff;
   text-shadow: 3px 3px 3px rgba(5, 210, 248, 0.83);
   padding: 30px;
   text-align: center;
   border-radius: 3px;
+}
+
+/* start box */
+#start {
+  width: 350px;
+  padding: 40px;
+}
+#start img {
+  margin-top: 10px;
 }
 
 h5 {
@@ -117,7 +120,7 @@ input:hover::placeholder {
   padding-top: 20px;
 }
 
-/* -----test----- */
+/* test box */
 #test {
   width: 100%;
 }
@@ -125,54 +128,50 @@ input:hover::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px 5px;
   font-size: 22px;
 }
 
 #header i {
   padding-right: 7px;
-  font-size: 23px;
+  font-size: 21px;
 }
 
 #header > div {
-  width: 120px;
+  width: 105px;
+  padding: 5px 10px;
 }
-
-/* #header span {
-  color: #542501;
-} */
 
 #question {
   border-radius: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 10px;
 }
 #question img {
   background-color: #fff;
-  padding: 20px;
+  width: 300px;
 }
+
 #options {
-  padding: 20px;
+  padding: 10px 0;
   background-color: #fff;
   border-radius: 5px;
-  /* display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-start; */
 }
 
 #options img {
-  margin: 20px;
-  /* box-shadow: 0px 0px 5px rgba(5, 210, 248, 0.83); */
   border: 3px solid rgba(5, 210, 248, 0.83);
+  width: 100px;
+  margin: 10px;
 }
 #options img:active {
-  /* box-shadow: 0px 0px 5px rgba(2, 246, 238, 0.966); */
   box-shadow: 0px 0px 5px rgba(250, 160, 4, 0.966);
   border-color: rgb(247, 150, 39);
 }
 #options img:hover {
   transform: scale(1.03);
+}
+
+/* result box*/
+#result {
+  width: 400px;
 }
 
 /* chart */
